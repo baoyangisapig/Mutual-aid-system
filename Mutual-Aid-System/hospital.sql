@@ -11,7 +11,7 @@
  Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 08/03/2019 13:21:57
+ Date: 08/03/2019 13:42:17
 */
 
 SET NAMES utf8mb4;
@@ -128,4 +128,19 @@ INSERT INTO `professor` VALUES (8, '何云伟', '10017', 'https://timgsa.baidu.c
 -- ----------------------------
 DROP TABLE IF EXISTS `seeker`;
 CREATE TABLE `seeker`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `section` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of seeker
+-- ----------------------------
+INSERT INTO `seeker` VALUES (20, '章三', '16312', '心理咨询');
+INSERT INTO `seeker` VALUES (21, '章三', '33288', '心理咨询');
+INSERT INTO `seeker` VALUES (22, '张三', '31766', '考研互助');
+INSERT INTO `seeker` VALUES (23, '张三', '14939', '考研互助');
+
+SET FOREIGN_KEY_CHECKS = 1;
