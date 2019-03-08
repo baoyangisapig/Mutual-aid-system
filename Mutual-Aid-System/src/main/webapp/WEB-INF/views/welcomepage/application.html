@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(
+            function()
+            {
+                $("#bt3").click(
+                    function () {
+                        $.post(
+                            "http://localhost:8080/demo/result",
+                            {
+                                status:3
+                            },
+                            function (data) {
+                                var data1=JSON.parse(data);//将string类型转换成json类型
+                                $('#biao').html("");
+                                for(i=0;i<data1.length;i++){
+                                    var p_name=data1[i].p_name;
+                                    var p_section=data1[i].p_section;
+                                    var d_name=data1[i].d_name;
+                                    var d_section=data1[i].d_section;
+                                    var time=data1[i].time;
+                                    var name=data1[i].name;
+                                    var room=data1[i].roomnumber;
+                                    var str="<tr><td>"+p_name+"</td><td>"+p_section+"</td><td>"+d_name+"</td><td>"+d_section+"</td><td>"+time+"</td><td>"+name+"</td><td>"+room+"</td><td>申请已接受已安排</td><td><td></td><tr>";
+                                    $('#biao').append(str);
+
+
+                                }
+
+                            }
+                        ).error(function (msg) {
+                            alert("无任务状态");
+                        })
+                    }
+                );
+
+            }
+        );
+    </script>
+</head>
+<body>
+<body background="../../../bootstrap/img/index.jpg" style="background-repeat:no-repeat ;background-size:100% 100%;">
+<p style="text-align:center;font-size: 40px;font-weight: bold">申请进度查询</p><br/>
+<button type="button" class="btn btn-default" id="bt3">已通过的互助申请</button>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>求助人姓名</th>
+        <th>求助类型</th>
+        <th>援助人姓名</th>
+        <th>援助类型</th>
+        <th>预约时间</th>
+        <th>援助事项</th>
+        <th>地点</th>
+        <th>预约状态</th>
+    </tr>
+    </thead>
+    <tbody id="biao">
+
+    </tbody>
+</table>
+</body>
+</html>
